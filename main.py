@@ -13,13 +13,11 @@ updater = Updater('1142606683:AAFHEBgNIDbqZZ6RizWYRLFmqRpr-8KRBEg', use_context=
 
 # Game data
 a_board = None
-an_enemy = None
 a_player = None
 
 
 def begin_game(update, context):
     global a_board
-    global an_enemy
     global a_player
 
     a_player = Player(12, "Guerrero")
@@ -37,21 +35,25 @@ def draw_board(update, context):
 
 def move_up(update, context):
     a_player.move_up()
+    a_board.make_enemies_move()
     draw_board(update, context)
 
 
 def move_down(update, context):
     a_player.move_down()
+    a_board.make_enemies_move()
     draw_board(update, context)
 
 
 def move_left(update, context):
     a_player.move_left()
+    a_board.make_enemies_move()
     draw_board(update, context)
 
 
 def move_right(update, context):
     a_player.move_right()
+    a_board.make_enemies_move()
     draw_board(update, context)
 
 

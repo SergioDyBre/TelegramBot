@@ -20,6 +20,7 @@ class Board:
                       [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
                       [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
                       [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]]
+        self.list_enemies = []              
         new_player_x = randint(0, 9)
         new_player_y = randint(0, 9)
         self.cells[new_player_y][new_player_x] = player
@@ -33,7 +34,12 @@ class Board:
             while(self.cells[new_enemy_y][new_enemy_x] != 0):
                 new_enemy_x = randint(0, 9)
                 new_enemy_y = randint(0, 9)
-            self.cells[new_enemy_y][new_enemy_x] = Enemy("Enemy {}".format(i))
+
+            enemy =  Enemy("Enemy {}".format(i))
+            self.cells[new_enemy_y][new_enemy_x] = enemy
+            self.list_enemies.append(enemy)
+            enemy.set_coordinates(new_enemy_x, new_enemy_y)
+            enemy.set_board(self)
 
     def __str__(self):
         """ Beatifully prints the current board with c00l emoji """
@@ -57,3 +63,7 @@ class Board:
             board_render += "\n"
 
         return board_render
+
+    def make_enemies_move(self):
+        for enemy in self.list_enemies:
+            enemy.make_move()   
