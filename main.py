@@ -22,11 +22,8 @@ def begin_game(update, context):
     global an_enemy
     global a_player
 
-    a_board = Board()
-    an_enemy = Enemy("Ogro")
     a_player = Player(12, "Guerrero")
-    a_board.cells[0][0] = a_player
-    a_board.cells[9][9] = an_enemy
+    a_board = Board(a_player)
 
     update.message.reply_text("I've created a new game! Please use /show to show the board.")
 
