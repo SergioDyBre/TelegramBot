@@ -20,7 +20,7 @@ a_board.cells[9][9] = an_enemy
 
 
 def draw_board(update, context):
-	update.message.reply_text("Trying to print board: {}".format(a_board.cells))
+	update.message.reply_text(str(a_board))
 
 updater.dispatcher.add_handler(CommandHandler('show', draw_board))
 
