@@ -23,6 +23,8 @@ class Board:
         new_player_x = randint(0, 9)
         new_player_y = randint(0, 9)
         self.cells[new_player_y][new_player_x] = player
+        player.set_coordinates(new_player_x, new_player_y)
+        player.set_board(self)
 
         number_of_enemies = randint(1, 3)
         for i in range(0, number_of_enemies):

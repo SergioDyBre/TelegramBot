@@ -35,8 +35,32 @@ def draw_board(update, context):
         update.message.reply_text(str(a_board))
 
 
+def move_up(update, context):
+    a_player.move_up()
+    draw_board(update, context)
+
+
+def move_down(update, context):
+    a_player.move_down()
+    draw_board(update, context)
+
+
+def move_left(update, context):
+    a_player.move_left()
+    draw_board(update, context)
+
+
+def move_right(update, context):
+    a_player.move_right()
+    draw_board(update, context)
+
+
 updater.dispatcher.add_handler(CommandHandler('show', draw_board))
 updater.dispatcher.add_handler(CommandHandler('begin', begin_game))
+updater.dispatcher.add_handler(CommandHandler('move_up', move_up))
+updater.dispatcher.add_handler(CommandHandler('move_down', move_down))
+updater.dispatcher.add_handler(CommandHandler('move_left', move_left))
+updater.dispatcher.add_handler(CommandHandler('move_right', move_right))
 
 updater.start_polling()
 updater.idle()
