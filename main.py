@@ -1,19 +1,30 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+import logging
 from telegram.ext import Updater, CommandHandler
+from board import Board
+from enemy import Enemy
+from player import Player
 
-
-def hello_handler(update, context):
-    update.message.reply_text(
-        'Hello {}'.format(update.message.from_user.first_name))
-
-def bye_handler(update, context):
-    update.message.reply_text("Talogo {}".format(update.message.from_user.first_name))
-
+logging.basicConfig(level=logging.DEBUG,
+                    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 
 updater = Updater('1142606683:AAFHEBgNIDbqZZ6RizWYRLFmqRpr-8KRBEg', use_context=True)
 
-updater.dispatcher.add_handler(CommandHandler('hello', hello_handler))
-updater.dispatcher.add_handler(CommandHandler('bye', bye_handler))
+a_board = Board()
+an_enemy = Enemy("Ogro")
+a_player = Player(12,"Guerrero")
+
+a_board.cells[0][0] = a_player
+a_board.cells[9][9] = an_enemy
+
+
+def draw_board(update, context):
+	update.message.reply_text("Trying to print board: {}".format(a_board.cells))
+
+updater.dispatcher.add_handler(CommandHandler('show', draw_board))
 
 updater.start_polling()
 updater.idle()
 
+#<3
