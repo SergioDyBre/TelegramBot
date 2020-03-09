@@ -2,8 +2,8 @@
 # -*- coding: utf-8 -*-
 from random import randint
 from obstacle import Obstacle
-from player import Player
-from enemy import Enemy
+from characters.player import Player
+from characters.enemy import Enemy
 
 
 class Board:
@@ -39,7 +39,7 @@ class Board:
                 elif isinstance(tile, Enemy):
                     board_render += enemy_emoji
                 elif isinstance(tile, Obstacle):
-                    board_render += obstacle_emoji  
+                    board_render += obstacle_emoji
                 else:
                     board_render += error_emoji
             board_render += "\n"
@@ -80,11 +80,10 @@ class Board:
             enemy.set_board(self)
 
     def create_obstacles(self):
-        num_obstacles = randint(1,3)
-       
+        num_obstacles = randint(1, 3)
 
         for i in range(0, num_obstacles):
-            obstacle_size = randint(1,2)
+            obstacle_size = randint(1, 2)
             x = randint(0, self.size_x - 1)
             y = randint(0, self.size_y - 1)
             self.cells[y][x] = Obstacle()
@@ -99,4 +98,4 @@ class Board:
                 elif move == 3:
                     x = x - 1
                 if 0 <= x < self.size_x and 0 <= y < self.size_y:
-                    self.cells[y][x] = Obstacle()    
+                    self.cells[y][x] = Obstacle()

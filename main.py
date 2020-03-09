@@ -3,8 +3,8 @@
 import logging
 from telegram.ext import Updater, CommandHandler
 from board import Board
-from enemy import Enemy
-from player import Player
+from characters.enemy import Enemy
+from characters.player import Player
 
 logging.basicConfig(level=logging.DEBUG,
                     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')

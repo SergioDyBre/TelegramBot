@@ -1,14 +1,12 @@
-class Player:
-    id = None
+class Character:
     name = ""
     life = 100
     board = None
     board_x = None
     board_y = None
 
-    def __init__(self, id, name):
-        self.id = id
-        self.name = name
+    def __init__(self):
+        pass
 
     def set_coordinates(self, x, y):
         self.board_x = x
